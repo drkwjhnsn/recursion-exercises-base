@@ -22,8 +22,11 @@ const stringify = function(obj) {
   } else if (Array.isArray(obj)) {
     const stringAry = _.map(obj, item => stringify(item));
     return `[${stringAry.join()}]`
+    
+  } else {
+    const stringObj = _.map(obj, (item, key) => `\"${key}\":${stringify(item)}`);
+    return `{${stringObj.join()}}`
   }
-  
 };
 
 module.exports = {
